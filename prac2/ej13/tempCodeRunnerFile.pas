@@ -1,0 +1,2 @@
+
+            readln(carga,destino);

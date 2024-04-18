@@ -1,0 +1,12 @@
+10 15 10 10 10 10
+laplata
+laplata
+10 28 10 10 10 10
+berazategui
+laplata
+20 13 10 10 10 10
+olmos
+laplata
+30 15 10 10 10 10
+laloma
+laplata

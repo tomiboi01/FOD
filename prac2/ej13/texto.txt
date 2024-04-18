@@ -1,0 +1,12 @@
+argentina
+10
+20
+grecia
+10
+20
+italia
+15
+10
+venezuela
+20
+10
