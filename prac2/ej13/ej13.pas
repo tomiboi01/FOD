@@ -79,37 +79,20 @@ begin
     leer(d1,c1);
     leer(d2,c2);
     minimo(c1,c2,d1,d2,min);
-    if (min.destino <> 'zzzzz') then 
-    begin
-        read(vuelos, v);
-        while(v.destino <> min.destino) and (v.fecha <> min.fecha) and (v.hora <> min.hora) do 
-            read(vuelos, v);
-    end;
-
+    
     while(min.destino <> 'zzzzz') do
     begin
-        while(min.destino=v.destino) do 
-        begin
-            while (min.destino=v.destino) and (min.fecha=v.fecha) do 
-            begin
-                while (min.destino=v.destino) and (min.fecha=v.fecha) and (min.hora=v.hora) do 
-                begin 
-                    v.asientosDisp := v.asientosDisp - min.asientosComprados;
-                    minimo(c1,c2,d1,d2,min);
-                end;
-                seek(vuelos, filepos(vuelos)-1);
-                writeln(v.destino, ' ', v.fecha, ' ', v.hora,' ', v.asientosDisp);
-                write(vuelos, v);
-                if (v.asientosDisp < 10) then 
-                    agregaradelante(l, v);
-                    
-                if (min.destino <> 'zzzzz') then 
-                begin
-                    read (vuelos,v);
-                    while(v.destino <> min.destino) and (v.fecha <> min.fecha) and (v.hora <> min.hora) do 
-                        read(vuelos, v);
-                end;
-            end;
+        read(vuelos, v);
+        while(v.destino <> min.destino) or (v.fecha <> min.fecha) or (v.hora <> min.hora) do 
+            read(vuelos, v);
+        while (min.destino=v.destino) and (min.fecha=v.fecha) and (min.hora=v.hora) do 
+        begin 
+            v.asientosDisp := v.asientosDisp - min.asientosComprados;
+            minimo(c1,c2,d1,d2,min);
         end;
+        seek(vuelos, filepos(vuelos)-1);
+        write(vuelos, v);
+        if (v.asientosDisp < 10) then 
+            agregaradelante(l, v);
     end;
 end.
